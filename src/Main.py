@@ -4,7 +4,11 @@ class main(object):
         print("starting")
 
 
+    def __init__(self):
+        print("Construktor")
+
+
 
 
 program = main()
-main.start()
+program.start()
