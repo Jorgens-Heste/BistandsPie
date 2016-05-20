@@ -1,14 +1,18 @@
-class main(object):
-
-    def start(self):
-        print("starting")
+from src.User import user
 
 
-    def __init__(self):
-        print("Construktor")
-
+def waitForCardRead():
+    #Reads card gets data and some number
+    currentuser = user("040593-3011", "Daniel")
+    return currentuser
 
 
 
-program = main()
-program.start()
+currentuser = waitForCardRead
+
+print.user.name
+print.user.cpr
+
+
+
+
