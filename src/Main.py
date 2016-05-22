@@ -3,9 +3,14 @@ from reader import MagReader
 
 reader = MagReader()
 
-currentuser = reader.readDataFromCardAndReturnPerson()
+while True:
+    currentuser = reader.readDataFromCardAndReturnPerson()
 
-print(currentuser.name)
+
+    print(currentuser.name)
+    print(currentuser.city)
+    print(currentuser.cpr)
+
 
 
 

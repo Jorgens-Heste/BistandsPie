@@ -5,3 +5,7 @@ class Person(object):
 
     def setName(self, name):
         self.name = name
+
+
+    def setCity(self, city):
+        self.city = city
