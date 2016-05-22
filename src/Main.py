@@ -1,17 +1,11 @@
-from src.User import user
+from person import *
+from reader import MagReader
 
+reader = MagReader()
 
-def waitForCardRead():
-    #Reads card gets data and some number
-    currentuser = user("040593-3011", "Daniel")
-    return currentuser
+currentuser = reader.readDataFromCardAndReturnPerson()
 
-
-
-currentuser = waitForCardRead
-
-print.user.name
-print.user.cpr
+print(currentuser.name)
 
 
 
