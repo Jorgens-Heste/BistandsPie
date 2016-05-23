@@ -1,15 +1,29 @@
 from person import *
-from reader import MagReader
+from reader import *
+from conncections import FirebaseConnector
 
-reader = MagReader()
+
+
+#reader = MagReader()
+reader = FakeReader()
+connectionmanager = FirebaseConnector()
+
 
 while True:
     currentuser = reader.readDataFromCardAndReturnPerson()
 
+    connectionmanager.getUsers()
+    connectionmanager.lookupUser()
 
-    print(currentuser.name)
-    print(currentuser.city)
-    print(currentuser.cpr)
+    break
+
+
+
+
+    #print(currentuser.name)
+    #print(currentuser.city)
+    #print(currentuser.cpr)
+
 
 
 

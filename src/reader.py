@@ -159,3 +159,27 @@ class MagReader(object):
         '851': 'Aalborg',
         '860': 'Hjoerring'}
 
+
+
+#For eayly testing
+#yes this should probably not live here but it is easier to do testing and this is a prototype and miles way from production anyway
+class FakeReader(object):
+
+
+    def readDataFromCardAndReturnPerson(self):
+
+        result = Person()
+
+        result.setName("Daniel Graungaard")
+        result.setCity("Aarhus")
+        result.setCPR("0403922683")
+
+        time.sleep(2)
+        return result
+
+
+
+
+class WrongReadException(Exception):
+    pass
+
