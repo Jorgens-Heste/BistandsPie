@@ -172,7 +172,7 @@ class FakeReader(object):
 
         result = Person()
 
-        result.setName("Hans something")
+        result.setName("Daniel Graungaard")
         result.setCity("Aarhus")
         result.setCPR(self.cpr)
 

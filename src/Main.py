@@ -5,18 +5,22 @@ from conncections import FirebaseConnector
 
 
 #reader = MagReader()
-reader = FakeReader("628628322323")
+reader = FakeReader("3232")
 connectionmanager = FirebaseConnector()
 
 
 while True:
     currentuser = reader.readDataFromCardAndReturnPerson()
+
+    #connectionmanager.addUser(currentuser)
+
     #connectionmanager.addUser(currentuser)
 
 
     sessionnumber = connectionmanager.lookupUserSessionNumber(currentuser)
-
     print sessionnumber
+
+    connectionmanager.incrementSession(currentuser)
 
     '''
     if status:

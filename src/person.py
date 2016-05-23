@@ -12,3 +12,6 @@ class Person(object):
 
     def setSession(self, session):
         self.session = session
+
+    def setID(self, id):
+        self.id = id
