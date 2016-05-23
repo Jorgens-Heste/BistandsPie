@@ -42,10 +42,20 @@ class FirebaseConnector(object):
     """
     def updateUser(self, person):
 
-        data = {person.id : { "name": person.name, "cpr": person.cpr, "by": person.city, "session": person.session}}
+
+        userbody = self.generateUserData(person)
+
+        data = {person.id : userbody}
 
         self.makePatchCall(data)
 
+
+    """
+    Returns the body of a json user matching the data in the object given
+    """
+    def generateUserData(self, person):
+
+        return { "name": person.name, "cpr": person.cpr, "by": person.city, "session": person.session}
 
 
     """
@@ -65,7 +75,9 @@ class FirebaseConnector(object):
 
         #result2 = self.firebase.put('/ users', data = {"238329": {"name": "mr mr"}})
 
-        result = self.firebase.post('/users', data = { "name": person.name, "cpr": person.cpr, "by": person.city, "session": 0} , params={'print': 'pretty'})
+        person.setSession(0)
+        data = self.generateUserData(person)
+        result = self.firebase.post('/users', data , params={'print': 'pretty'})
         print result
 
 

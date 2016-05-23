@@ -5,7 +5,7 @@ from conncections import FirebaseConnector
 
 
 #reader = MagReader()
-reader = FakeReader("3232")
+reader = FakeReader("332323232332")
 connectionmanager = FirebaseConnector()
 
 
