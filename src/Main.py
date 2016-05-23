@@ -11,9 +11,18 @@ connectionmanager = FirebaseConnector()
 
 while True:
     currentuser = reader.readDataFromCardAndReturnPerson()
+    connectionmanager.addUser(currentuser)
 
-    connectionmanager.getUsers()
-    connectionmanager.lookupUser()
+    '''
+    status = connectionmanager.lookupUser(currentuser.id)
+
+    if status:
+        print "ARH troar wi har set ham foer"
+    else:
+        print "ARH tror ikk wi har set hem foear"
+    '''
+
+
 
     break
 

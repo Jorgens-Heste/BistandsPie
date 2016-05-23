@@ -9,3 +9,6 @@ class Person(object):
 
     def setCity(self, city):
         self.city = city
+
+    def setID(self, id):
+        self.id = id

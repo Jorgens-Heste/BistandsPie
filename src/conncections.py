@@ -11,13 +11,26 @@ class FirebaseConnector(object):
         result = self.firebase.get('/users', None)
         return result
 
-    def lookupUser(self):
+    def lookupUser(self, id):
         users = self.getUsers()
 
-        for id in users:
-            print id
+        for userid in users:
+            if userid == id:
+                return True
 
-        print users
+        return False
+
+    def addUser(self, person):
+
+
+        #result2 = self.firebase.put('/users', data = {"238329": {"name": "mr mr"}})
+
+        result = self.firebase.post('/users', data = { "name": "Kapsper Heiselberg", "cpr": "363738372994", "by": "Aarhus" } , params={'print': 'pretty'})
+        result = self.firebase.post('/users', data =  { "name": "Daniel Graungaard", "cpr": "0565872234", "by": "Aarhus" }, params={'print': 'pretty'})
+        print result
+
+
+
 
 
 

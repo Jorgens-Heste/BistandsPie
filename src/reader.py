@@ -173,6 +173,8 @@ class FakeReader(object):
         result.setName("Daniel Graungaard")
         result.setCity("Aarhus")
         result.setCPR("0403922683")
+        result.setID("63257")
+
 
         time.sleep(2)
         return result
