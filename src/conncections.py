@@ -22,6 +22,7 @@ class FirebaseConnector(object):
         else:
             self.addUser(person)
             print "WI KENDER DIG IKK"
+
             return 0
 
 
@@ -30,8 +31,7 @@ class FirebaseConnector(object):
 
         #result2 = self.firebase.put('/ users', data = {"238329": {"name": "mr mr"}})
 
-        result = self.firebase.post('/users', data = { "name": "Kapsper Heiselberg", "cpr": "363738372994", "by": "Aarhus", "session": "0"} , params={'print': 'pretty'})
-        result = self.firebase.post('/users', data =  { "name": "Daniel Graungaard", "cpr": "0565872234", "by": "Aarhus",  "session": "2" }, params={'print': 'pretty'})
+        result = self.firebase.post('/users', data = { "name": person.name, "cpr": person.cpr, "by": person.city, "session": 0} , params={'print': 'pretty'})
         print result
 
     def findUser(self, person):

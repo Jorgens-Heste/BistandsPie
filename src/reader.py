@@ -165,14 +165,16 @@ class MagReader(object):
 #yes this should probably not live here but it is easier to do testing and this is a prototype and miles way from production anyway
 class FakeReader(object):
 
+    def __init__(self, cpr):
+        self.cpr = cpr
 
     def readDataFromCardAndReturnPerson(self):
 
         result = Person()
 
-        result.setName("Daniel Graungaard")
+        result.setName("Hans something")
         result.setCity("Aarhus")
-        result.setCPR("0565872234")
+        result.setCPR(self.cpr)
 
 
         time.sleep(2)

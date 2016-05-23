@@ -9,3 +9,6 @@ class Person(object):
 
     def setCity(self, city):
         self.city = city
+
+    def setSession(self, session):
+        self.session = session
