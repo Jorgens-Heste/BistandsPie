@@ -20,6 +20,7 @@ class FirebaseConnector(object):
             return sessionnumber
         else:
             self.addUser(person)
+            self.findAndUpdateFirebaseID(person)
             print "WI KENDER DIG IKK"
 
             return 0
@@ -71,14 +72,27 @@ class FirebaseConnector(object):
 
 
     def addUser(self, person):
-
-
         #result2 = self.firebase.put('/ users', data = {"238329": {"name": "mr mr"}})
 
         person.setSession(0)
         data = self.generateUserData(person)
         result = self.firebase.post('/users', data , params={'print': 'pretty'})
         print result
+
+
+    def findAndUpdateFirebaseID(self, person):
+        users = self.getUsers()
+
+        try:
+            for id in users:
+                userbody = users.get(id) # get a reference to userbody from  firebase user ID
+                usercpr = self.lookUpUserCPR(userbody)
+
+                if usercpr == person.cpr:
+                    person.setID(id) # LOOK HERE: Possible source of problems  This should be done in a more clever way I just can not think of one right now
+
+        except TypeError: # if no user has been added we ignore this and asume that we dont know anybody
+            pass
 
 
 
