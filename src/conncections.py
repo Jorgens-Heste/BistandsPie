@@ -1,6 +1,8 @@
 from firebase import *
 import json
 
+
+
 class FirebaseConnector(object):
 
     def __init__(self):
@@ -11,23 +13,49 @@ class FirebaseConnector(object):
         result = self.firebase.get('/users', None)
         return result
 
-    def lookupUser(self, id):
-        users = self.getUsers()
+    def lookupUserSessionNumber(self, person):
+        user = self.findUser(person)
 
-        for userid in users:
-            if userid == id:
-                return True
+        if user != "":
+            print "WI KENDER DIG"
+            return self.lookupUserSession(user)
+        else:
+            self.addUser(person)
+            print "WI KENDER DIG IKK"
+            return 0
 
-        return False
 
     def addUser(self, person):
 
 
-        #result2 = self.firebase.put('/users', data = {"238329": {"name": "mr mr"}})
+        #result2 = self.firebase.put('/ users', data = {"238329": {"name": "mr mr"}})
 
-        result = self.firebase.post('/users', data = { "name": "Kapsper Heiselberg", "cpr": "363738372994", "by": "Aarhus" } , params={'print': 'pretty'})
-        result = self.firebase.post('/users', data =  { "name": "Daniel Graungaard", "cpr": "0565872234", "by": "Aarhus" }, params={'print': 'pretty'})
+        result = self.firebase.post('/users', data = { "name": "Kapsper Heiselberg", "cpr": "363738372994", "by": "Aarhus", "session": "0"} , params={'print': 'pretty'})
+        result = self.firebase.post('/users', data =  { "name": "Daniel Graungaard", "cpr": "0565872234", "by": "Aarhus",  "session": "2" }, params={'print': 'pretty'})
         print result
+
+    def findUser(self, person):
+        users = self.getUsers()
+
+        for id in users:
+            userbody = users.get(id) # get a reference to userbody from  firebase user ID
+            usercpr = self.lookUpUserCPR(userbody)
+
+            if usercpr == person.cpr:
+                return userbody
+
+        return ""
+
+    def lookupUserSession(self, userbody):
+        return userbody.get("session")
+
+    def lookUpUserCPR(self, userbody):
+        return userbody.get("cpr")
+
+
+
+
+
 
 
 
