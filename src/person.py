@@ -19,3 +19,9 @@ class Person(object):
 
     def setID(self, id):
         self.id = id
+
+    def setAddress(self, address):
+        self.address = address
+
+    def setPostalcode(self, postalcode):
+        self.postalcode = postalcode

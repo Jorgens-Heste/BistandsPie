@@ -37,13 +37,15 @@ class MagReader(object):
     def parseData(self, data):
 
         #track1
-        #self.parseCPR(data)
         self.parseName(data)
-        # #self.parseCity(data)
         #track2
-        self.parseTrack2(data)
+        self.parseAddress(data)
+        self.parseCity(data)
+        self.parseZipCode(data)
+        self.parseCPR(data)
 
-    def parseTrack2(self, data):
+
+    def parseAddress(self, data):
         withoutfront = data[35 : len(data) - 1]
 
         #Find end
@@ -51,14 +53,24 @@ class MagReader(object):
         match = regexpattern.search(withoutfront)
         spaceendindex = match.end()
 
-        print spaceendindex
         rawaddress = withoutfront[0:spaceendindex]
 
-        print rawaddress
+        rawaddress = self.replaceDanishLetters(rawaddress)
 
+        adressparts = rawaddress.split(" ")
+
+        result = ""
+        for word in adressparts:
+            result = result + " " + self.utf8Title(word)
+
+        result = result[1: len(result)] # Remove first space
+
+        result  = result.replace("-", "v. ") #Prettify room numbers
+
+        self.currentPerson.setAddress(result)
 
     def parseCPR(self, data):
-        cpr = data[8:18]
+        cpr = data[86:96]
         self.currentPerson.setCPR(cpr)
 
     def parseName(self, data):
@@ -82,9 +94,15 @@ class MagReader(object):
 
 
     def parseCity(self, data):
-        bycode = data[28:31] #Looks op city from dictionary below
+        bycode = data[69:72] #Looks op city from dictionary below
         by = self.cities[bycode]
         self.currentPerson.setCity(by)
+
+    def parseZipCode(self, data):
+        postalcode = data[72:76] #Looks op city from dictionary below
+        self.currentPerson.setPostalcode(postalcode)
+
+
 
 
 
