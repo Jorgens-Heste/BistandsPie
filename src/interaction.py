@@ -61,7 +61,7 @@ class InteractionManager(object):
         for question in self.buildList(self.questionsforone, 5):
             self.session.appendElement("question", question)
 
-        for statement in self.buildList(self.economyStatementList, 2):
+        for statement in self.buildList(self.economyStatements, 2):
             number = randint(5000, 20000)
             concatenate = statement %(number)
             print concatenate
@@ -69,6 +69,9 @@ class InteractionManager(object):
 
 
         self.session.appendElement("green", "Nuværende Addresse: " + user.address + ", " + user.city)
+        for statement in self.buildList(self.workstatements, 2):
+            self.session.appendElement("green", statement)
+
 
         self.session.appendElement("red", "Fødselsdato: " + user.birthday)
         date = self.datePicker.randomDate("1/1/2012", "24/5/2016", random.uniform(0, 1))
@@ -142,7 +145,7 @@ class InteractionManager(object):
         "Er der balance i min økonomi?",
         "Er der mere jeg vil vide?"]
 
-    economyStatementList = [
+    economyStatements = [
 
         "Der står %d på din konto",
         "Samlet set ejer du %d kroner",
@@ -155,3 +158,9 @@ class InteractionManager(object):
         "Du mangler anden vaccination af din Hepapitis B for at fuldt ud vaccineret.",
         "Du har været ved vagtlægen 3 gange i løbet af sidste å"]
 
+
+    workstatements = [
+        "NoGet óm arbejdee",
+        "noget emre om arbejde",
+        "ARBEJDE ARBEJDE",
+        "Work work"]
