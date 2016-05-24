@@ -35,7 +35,7 @@ def worker():
 
 thread = threading.Thread(target=worker)
 
-#@app.before_first_request
+@app.before_first_request
 def startMatteReadingLoop():
     thread.start()
 
@@ -43,7 +43,8 @@ def startMatteReadingLoop():
 def startinteraction():
     initiateSession()
     session = interactionManager.getContent()
-    startMatteReadingLoop() # we noew monitor the app
+    matte.reset()
+
     return render_template('sessions.html', session = session)
 
 @app.route('/matte-status/')
@@ -52,6 +53,7 @@ def matteStatus():
 
 
 if __name__ == '__main__':
+    app.debug = True
     app.run()
 
 

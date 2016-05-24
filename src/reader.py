@@ -1,3 +1,8 @@
+# coding=utf-8
+from debian.debtags import readTagDatabase
+import re
+from nis import match
+
 from person import *
 import time
 import serial
@@ -11,45 +16,69 @@ class MagReader(object):
 
 
     def readDataFromCardAndReturnPerson(self):
-
-
-        data = self.readData();
-        resperson = self.parseData(data)
+        try:
+            data = self.readData();
+            self.parseData(data)
+        except ValueError: #Try again if error
+            print "VALUE ERROR"
+            self.readDataFromCardAndReturnPerson()
 
 
         #Reads card gets data and some number
         return self.currentPerson
 
 
+
     def readData(self):
-        data = False
-        while not data:
-
-            with serial.Serial('/dev/ttyUSB0', 9600, timeout=1) as ser:
-                # x = ser.read()          # read one byte
-                ##s = ser.read(10)        # read up to ten bytes (timeout)
-                line = ser.readline()   # read a '\n' terminated line
-                print line
-
-                if line != "":
-                    data = True
-        return line
+        print "Swipe card"
+        data = raw_input()
+        return data
 
     def parseData(self, data):
+
+        #track1
+        #self.parseCPR(data)
+        self.parseName(data)
+        # #self.parseCity(data)
+        #track2
         self.parseTrack2(data)
 
     def parseTrack2(self, data):
-        self.parseCPR(data)
-        self.parseName(data)
-        self.parseCity(data)
+        withoutfront = data[35 : len(data) - 1]
+
+        #Find end
+        regexpattern = re.compile("\s\s\s")
+        match = regexpattern.search(withoutfront)
+        spaceendindex = match.end()
+
+        print spaceendindex
+        rawaddress = withoutfront[0:spaceendindex]
+
+        print rawaddress
+
 
     def parseCPR(self, data):
         cpr = data[8:18]
         self.currentPerson.setCPR(cpr)
 
     def parseName(self, data):
-        name = data[8:18]
-        self.currentPerson.setName(name)
+        rawname = data[1:25]
+
+        splitter = rawname.index('^')
+
+
+        forname = rawname[splitter + 1 :len(rawname)]
+        sirname = rawname[0:splitter]
+
+        forname = self.replaceDanishLetters(forname)
+        sirname = self.replaceDanishLetters(sirname)
+
+        forname = self.utf8Title(forname)
+        sirname = self.utf8Title(sirname)
+
+        self.currentPerson.setName(forname)
+        self.currentPerson.setSirName(sirname)
+
 
 
     def parseCity(self, data):
@@ -60,71 +89,71 @@ class MagReader(object):
 
 
     cities = {
-        '101': 'Koebenhavn',
+        '101': 'København',
         '147': 'Frederiksberg',
         '151': 'Ballerup',
-        '153': 'Broendby',
-        '155': 'Dragoer',
+        '153': 'Brøndby',
+        '155': 'Dragør',
         '157': 'Gentofte',
         '159': 'Gladsaxe',
         '161': 'Glostrup',
         '163': 'Herlev',
         '165': 'Albertslund',
         '167': 'Hvidovre',
-        '169': 'Hoeje-Taastrup',
-        '173': 'Lyngby-Taarbaek',
-        '175': 'Roedovre',
-        '183': 'Ishoej',
-        '185': 'Taarnby',
-        '187': 'Vallensbaek',
-        '190': 'Furesoe',
-        '201': 'Alleroed',
+        '169': 'Høje-Tåstrup',
+        '173': 'Lyngby-Tårbæk',
+        '175': 'Rødovre',
+        '183': 'Ishøj',
+        '185': 'Tårnby',
+        '187': 'Vallensbæk',
+        '190': 'Furesø',
+        '201': 'Allerød',
         '210': 'Fredensborg',
-        '217': 'Helsingoer',
-        '219': 'Hilleroed',
-        '223': 'Hoersholm',
+        '217': 'Helsingør',
+        '219': 'Hillerød',
+        '223': 'Hørsholm',
         '230': 'Rudersdal',
         '240': 'Egedal',
         '250': 'Frederikssund',
-        '260': 'Frederiksvaerk-Hundested',
+        '260': 'Frederiksværk-Hundested',
         '270': 'Gribskov',
         '400': 'Bornholm',
         '253': 'Greve',
-        '259': 'Koege',
+        '259': 'Køge',
         '265': 'Roskilde',
-        '269': 'Solroed',
+        '269': 'Solrød',
         '306': 'Odsherred',
-        '316': 'Holbaek',
+        '316': 'Holbæk',
         '320': 'Faxe',
         '326': 'Kalundborg',
         '329': 'Ringsted',
         '330': 'Slagelse',
         '336': 'Stevns',
-        '340': 'Soroe',
+        '340': 'Sorø',
         '350': 'Lejre',
         '360': 'Lolland',
-        '370': 'Naestved',
+        '370': 'Næstved',
         '376': 'Guldborgsund',
         '390': 'Vordingborg',
         '410': 'Middelfart',
         '420': 'Assens',
-        '430': 'Faaborg-Midtfyn',
+        '430': 'Fåborg-Midtfyn',
         '440': 'Kerteminde',
         '450': 'Nyborg',
         '461': 'Odense',
         '479': 'Svendborg',
         '480': 'Bogense',
         '482': 'Langeland',
-        '492': 'aeroe',
+        '492': 'Ærø',
         '510': 'Haderslev',
         '530': 'Billund',
-        '540': 'Soenderborg',
-        '550': 'Toender',
+        '540': 'Sønderborg',
+        '550': 'Tønder',
         '561': 'Esbjerg',
-        '563': 'Fanoe',
+        '563': 'Fanø',
         '573': 'Varde',
         '575': 'Vejen',
-        '580': 'Aabenraa',
+        '580': 'åbenrå',
         '607': 'Fredericia',
         '621': 'Kolding',
         '630': 'Vejle',
@@ -140,24 +169,38 @@ class MagReader(object):
         '730': 'Randers',
         '766': 'Hedensted',
         '740': 'Silkeborg',
-        '741': 'Samsoe',
+        '741': 'Samsø',
         '746': 'Skanderborg',
-        '751': 'Aarhus',
+        '751': 'Århus',
         '756': 'Ikast--Brande',
-        '760': 'Ringkoebing-Skjern',
+        '760': 'Ringkøbing-Skjern',
         '779': 'Skive',
         '791': 'Viborg',
-        '773': 'Morsoe',
+        '773': 'Morsø',
         '787': 'Thisted',
-        '810': 'Broenderslev-Dronninglund',
+        '810': 'Brønderslev-Dronninglund',
         '813': 'Frederikshavn',
         '820': 'Vesthimmerland',
-        '825': 'Laesoe',
+        '825': 'Læsø',
         '840': 'Rebild',
         '846': 'Mariagerfjord',
         '849': 'Jammerbugt',
         '851': 'Aalborg',
-        '860': 'Hjoerring'}
+        '860': 'Hjørring'}
+
+
+
+    def replaceDanishLetters(self, string):
+        string = string.replace("\\", "Ø")
+        string = string.replace("[", "Æ")
+        string = string.replace("]", "Å")
+
+        return string
+
+    def utf8Title(self, string):
+        string = string.decode('utf8').title()
+        string = string.encode('utf8')
+        return string
 
 
 
@@ -179,10 +222,3 @@ class FakeReader(object):
 
         time.sleep(2)
         return result
-
-
-
-
-class WrongReadException(Exception):
-    pass
-

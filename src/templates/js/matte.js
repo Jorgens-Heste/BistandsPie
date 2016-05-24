@@ -4,7 +4,7 @@
         success: function(data) {
             console.log(data);
             if(data == 0) {
-                location.reload();
+                window.location.reload();
 
             }
         },

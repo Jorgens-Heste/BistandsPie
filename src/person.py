@@ -7,6 +7,10 @@ class Person(object):
         self.name = name
 
 
+    def setSirName(self, sirname):
+        self.sirname = sirname
+
+
     def setCity(self, city):
         self.city = city
 
