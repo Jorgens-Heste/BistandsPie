@@ -177,7 +177,7 @@ class FakeReader(object):
         result.setCPR(self.cpr)
 
 
-        time.sleep(2)
+        time.sleep(100)
         return result
 
 
