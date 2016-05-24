@@ -1,8 +1,12 @@
-from flask import Flask
+from flask import Flask, jsonify
 from flask import render_template
 
 app = Flask(__name__)
 
+@app.route('/newsomething/')
+def getRefresh():
+    res = False
+    return jsonify(res = None)
 
 
 @app.route('/hello/')
