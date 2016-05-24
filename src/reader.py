@@ -21,6 +21,7 @@ class MagReader(object):
             self.parseData(data)
         except ValueError: #Try again if error
             print "VALUE ERROR"
+            print "Is your keyboard layout danish?"
             self.readDataFromCardAndReturnPerson()
 
 

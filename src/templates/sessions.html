@@ -12,5 +12,11 @@
 
 <title>Hello from Flask</title>
 </head>
+<body>
+    <h1>Hello {{ session.heading }}!</h1>
+    {% for element in session.elements %}
+        <div class="{{ element[0] }}"> {{element[1]}} </div>
+    {% endfor %}
 
-  <h1>Hello {{ session.heading }}!</h1>
+    <div></div>
+</body>
