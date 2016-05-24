@@ -26,7 +26,7 @@ def initiateSession():
     sessionnumber = connectionmanager.lookupUserSessionNumber(currentuser)
 
     interactionManager.setUser(currentuser)
-    interactionManager.sendUserToSession(sessionnumber)
+    interactionManager.sendusertosession(sessionnumber)
 
     connectionmanager.incrementSession(currentuser)
 

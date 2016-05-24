@@ -2,6 +2,8 @@ class Person(object):
 
     def setCPR(self, cpr):
         self.cpr = cpr
+        date = cpr[0 : (len(cpr) - 4)]
+        self.birthday = date[0:2] + "/" + date[2:4] + "/" + date[4:6]
 
     def setName(self, name):
         self.name = name

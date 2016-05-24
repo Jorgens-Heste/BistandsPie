@@ -24,7 +24,6 @@ class Session(object):
         self.heading = heading
 
 
-
 class InteractionManager(object):
 
     session = Session()
@@ -32,7 +31,7 @@ class InteractionManager(object):
     def setUser(self, user):
         self.user = user
 
-    def sendUserToSession(self, previoussession):
+    def sendusertosession(self, previoussession):
 
         self.session = Session()
         self.session.setUser(self.user)
@@ -44,8 +43,6 @@ class InteractionManager(object):
         else:
             self.startSession3()
 
-
-
     def startSession1(self):
         self.session.setSessionNumber("1")
         self.session.setHeading("Afklaring")
@@ -53,15 +50,20 @@ class InteractionManager(object):
 
         self.session.appendElement("hilsen", "Hej " + user.name)
 
-        for question in self.buildquestionList1():
+        for question in self.buildList(self.questionsforone, 5):
             self.session.appendElement("question", question)
+
+        for statement in self.buildList(self.economyStatementList, 2):
+            number = self.guessnumber(5000, 20000)
+            concatenate = statement %(number)
+            print concatenate
+            self.session.appendElement("blue", concatenate)
 
         self.session.appendElement("green", "Nuværende Addresse: " + user.address + ", " + user.city)
 
-
+        self.session.appendElement("red", "Fødselsdato: " + user.birthday)
 
         print "Starter session: 1"
-
 
     def startSession2(self):
         self.session.setSessionNumber("2")
@@ -77,18 +79,20 @@ class InteractionManager(object):
     def getContent(self):
         return self.session
 
-    def buildquestionList1(self):
+    def guessnumber(self, min, max):
+        return randint(min, max)
+
+    def buildList(self, list, max):
         res = []
 
-        max = len(self.questionsforone)
+        highest = len(list)
         print max
-        for number in range(0, 5):
-            choice = randint(0, max - 1)
-            question = self.questionsforone[choice]
-            res.append(question)
+        for number in range(0, max):
+            choice = randint(0, highest - 1)
+            statement = list[choice]
+            res.append(statement)
 
         return res
-
 
 
 
@@ -108,3 +112,11 @@ class InteractionManager(object):
         "Hvor mange penge skal der til, for at jeg kan få det til at køre rundt?",
         "Er der balance i min økonomi?",
         "Er der mere jeg vil vide?"]
+
+    economyStatementList = [
+
+        "Der står %d på din konto",
+        "Samlet set ejer du %d kroner",
+        "Du har lån for %d kroner."]
+
+
