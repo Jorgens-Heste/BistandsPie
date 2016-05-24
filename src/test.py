@@ -6,7 +6,7 @@ user = magreader.readDataFromCardAndReturnPerson()
 
 print user.city
 print user.name
-print user.sirname
+print user.lastName
 print user.postalcode
 print user.address
 print user.cpr

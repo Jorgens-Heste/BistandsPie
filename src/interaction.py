@@ -1,5 +1,12 @@
 # coding=utf-8
 from random import randint
+import random
+
+
+
+from datepicker import DatePicker
+
+
 class Session(object):
 
     def __init__(self):
@@ -26,6 +33,7 @@ class Session(object):
 
 class InteractionManager(object):
 
+    datePicker = DatePicker()
     session = Session()
 
     def setUser(self, user):
@@ -54,14 +62,21 @@ class InteractionManager(object):
             self.session.appendElement("question", question)
 
         for statement in self.buildList(self.economyStatementList, 2):
-            number = self.guessnumber(5000, 20000)
+            number = randint(5000, 20000)
             concatenate = statement %(number)
             print concatenate
             self.session.appendElement("blue", concatenate)
 
+
         self.session.appendElement("green", "Nuværende Addresse: " + user.address + ", " + user.city)
 
         self.session.appendElement("red", "Fødselsdato: " + user.birthday)
+        date = self.datePicker.randomDate("1/1/2012", "24/5/2016", random.uniform(0, 1))
+        print date
+        self.session.appendElement("red", "Du var sidst ved lægen den: " + date)
+
+        for statement in self.buildList(self.healthstatements, 1):
+            self.session.appendElement("red", statement)
 
         print "Starter session: 1"
 
@@ -79,20 +94,34 @@ class InteractionManager(object):
     def getContent(self):
         return self.session
 
-    def guessnumber(self, min, max):
-        return randint(min, max)
 
+    #PRecondition list should be bigger than max or endless recursion
     def buildList(self, list, max):
         res = []
+        numlist = []
 
         highest = len(list)
         print max
+
         for number in range(0, max):
-            choice = randint(0, highest - 1)
+            choice = self.guessnumber(0, highest - 1, numlist)
             statement = list[choice]
             res.append(statement)
 
         return res
+
+    def guessnumber(self, min, max, list):
+        num = randint(min, max)
+        for number in list:
+            if num == number:
+                return self.guessnumber(min, max, list)
+
+        list.append(num)
+
+        return num
+
+
+
 
 
 
@@ -119,4 +148,10 @@ class InteractionManager(object):
         "Samlet set ejer du %d kroner",
         "Du har lån for %d kroner."]
 
+    healthstatements = [
+        "Din journal siger du døjer med rygproblemer.",
+        "Du har været ved lægen sidste måned med ondt i knæet ved en sportskade.",
+        "Din journal siger du har problemer i højre håndled fra arbejde på bærbar computer.",
+        "Du mangler anden vaccination af din Hepapitis B for at fuldt ud vaccineret.",
+        "Du har været ved vagtlægen 3 gange i løbet af sidste å"]
 
