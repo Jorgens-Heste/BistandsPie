@@ -19,17 +19,17 @@ class InteractionManager(object):
 
 
     def startSession1(self):
-        self.session = "1"
+        self.session = "session-1"
         print "Starter session: 1"
 
 
     def startSession2(self):
-        self.session = "2"
+        self.session = "session-2"
         print "Starter session: 2"
 
 
     def startSession3(self):
-        self.session = "3"
+        self.session = "session-3"
         print "Starter session: 3"
 
     def getContent(self):

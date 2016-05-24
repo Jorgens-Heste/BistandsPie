@@ -10,7 +10,7 @@ from conncections import FirebaseConnector
 app = Flask(__name__)
 
 #reader = MagReader()
-reader = FakeReader("2343233")
+reader = FakeReader("23343433")
 connectionmanager = FirebaseConnector()
 
 interactionManager = InteractionManager()
@@ -29,9 +29,12 @@ def initiateSession():
 
 
 @app.route('/')
-def hello_world():
+def startinteraction():
     initiateSession()
-    return interactionManager.getContent()
+    session = interactionManager.getContent()
+
+    return render_template('sessions.html', session = session)
+
 
 if __name__ == '__main__':
     app.run()
