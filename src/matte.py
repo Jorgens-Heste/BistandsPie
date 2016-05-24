@@ -3,13 +3,14 @@ import time
 
 class MatteReader(object):
 
-    alive = True
+    def __init__(self):
+        self.alive = "1"
 
     def checkMatte(self):
 
         #Simulkate waiting while loope with sleep
         time.sleep(10)
-        self.alive = False
+        self.alive = "0"
 
 
     def getStatus(self):

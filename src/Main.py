@@ -1,3 +1,5 @@
+import threading
+
 from flask import Flask, jsonify
 from flask import render_template
 
@@ -28,19 +30,25 @@ def initiateSession():
 
     connectionmanager.incrementSession(currentuser)
 
-def run():
+def worker():
     matte.checkMatte()
+
+thread = threading.Thread(target=worker)
+
+#@app.before_first_request
+def startMatteReadingLoop():
+    thread.start()
 
 @app.route('/')
 def startinteraction():
     initiateSession()
     session = interactionManager.getContent()
-
+    startMatteReadingLoop() # we noew monitor the app
     return render_template('sessions.html', session = session)
 
-@app.route('matte-status')
+@app.route('/matte-status/')
 def matteStatus():
-    return jsonify(matte.alive)
+    return matte.alive
 
 
 if __name__ == '__main__':
