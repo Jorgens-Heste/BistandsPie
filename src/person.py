@@ -6,10 +6,8 @@ class Person(object):
     def setName(self, name):
         self.name = name
 
-
-    def setSirName(self, sirname):
-        self.sirname = sirname
-
+    def setLastName(self, lastname):
+        self.lastName = lastname
 
     def setCity(self, city):
         self.city = city
@@ -24,4 +22,4 @@ class Person(object):
         self.address = address
 
     def setPostalcode(self, postalcode):
-        self.postalcode = postalcode
+        self.postalCode = postalcode

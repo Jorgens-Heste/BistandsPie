@@ -89,7 +89,7 @@ class MagReader(object):
         sirname = self.utf8Title(sirname)
 
         self.currentPerson.setName(forname)
-        self.currentPerson.setSirName(sirname)
+        self.currentPerson.setLastName(sirname)
 
 
 
@@ -233,8 +233,12 @@ class FakeReader(object):
 
         result = Person()
 
-        result.setName("Daniel Graungaard")
+        result.setName("Daniel")
+        result.setLastName("Graungaard")
         result.setCity("Aarhus")
+        result.setAddress("Engdalgårdsvej 156 st tv v 1")
+        result.setCity("Aarhus")
+        result.setPostalcode("8330")
         result.setCPR(self.cpr)
 
 

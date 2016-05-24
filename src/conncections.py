@@ -56,7 +56,7 @@ class FirebaseConnector(object):
     """
     def generateUserData(self, person):
 
-        return { "name": person.name, "cpr": person.cpr, "by": person.city, "session": person.session}
+        return { "firstname": person.name, "lastname": person.lastName,  "cpr": person.cpr,  "address": person.address, "city": person.city,  "postalcode": person.postalCode,   "session": person.session}
 
 
     """
