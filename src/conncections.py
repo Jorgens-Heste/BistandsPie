@@ -1,3 +1,5 @@
+from random import randint
+
 from firebase import *
 
 class FirebaseConnector(object):
@@ -55,7 +57,7 @@ class FirebaseConnector(object):
     """
     def generateUserData(self, person):
 
-        return { "firstname": person.name, "lastname": person.lastName,  "cpr": person.cpr,  "address": person.address, "city": person.city,  "postalcode": person.postalCode,   "session": person.session}
+        return { "firstname": person.name, "lastname": person.lastName,  "cpr": person.cpr,  "address": person.address, "city": person.city,  "money": person.money, "postalcode": person.postalCode,   "session": person.session }
 
 
     """
@@ -74,6 +76,7 @@ class FirebaseConnector(object):
         #result2 = self.firebase.put('/ users', data = {"238329": {"name": "mr mr"}})
 
         person.setSession(0)
+        person.setMoney(randint(5000, 20000))
         data = self.generateUserData(person)
         result = self.firebase.post('/users', data , params={'print': 'pretty'})
         print result
@@ -109,6 +112,7 @@ class FirebaseConnector(object):
 
                 if usercpr == person.cpr:
                     person.setID(id) # LOOK HERE: Possible source of problems  This should be done in a more clever way I just can not think of one right now
+                    person.setMoney(userbody.get("money"))
                     return userbody
 
         except TypeError: # if no user has been added we ignore this and asume that we dont know anybody

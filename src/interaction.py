@@ -67,9 +67,18 @@ class InteractionManager(object):
             print concatenate
             self.session.appendElement("blue", concatenate)
 
+        numberofelements = len(self.moneyStatements) - 1
+        picknumber = randint(0, numberofelements)
+
+        self.session.appendElement("blue", self.moneyStatements[picknumber] % int(user.money))
+
         self.session.appendElement("green", "Nuværende Addresse: " + user.address + ", " + user.city)
         for statement in self.buildList(self.workstatements, 2):
             self.session.appendElement("green", statement)
+
+        self.session.appendElement("green", "Du har snart jubilæum i %s" % self.volunteerclubs[randint(0, len(self.volunteerclubs) - 1)])
+        self.session.appendElement("green", "Du har været været ansat i %d år, i dit sidste job." % randint(0, 10))
+
 
         self.session.appendElement("red", "Fødselsdato: " + user.birthday)
         date = self.datePicker.randomDate("1/1/2012", "24/5/2016", random.uniform(0, 1))
@@ -99,6 +108,10 @@ class InteractionManager(object):
         if person.age < 30:
             self.session.appendElement("udannelse", "En Uddannelsesvejleder kan snakke med omkring din fremtid på 33925000, alle hverdage fra 09.00 til 14.00.")
             return "Du har ikke ret til kontanthjælp, du kan i stedet for modtage uddannnelseshjælp."
+
+        elif person.money > 10000:
+            return self.nolist[randint(0, len(self.nolist) - 1)]
+
         else:
             return self.choicelist[randint(0, len(self.choicelist) - 1)]
 
@@ -155,11 +168,15 @@ class InteractionManager(object):
         "Er der balance i min økonomi?",
         "Er der mere jeg vil vide?"]
 
-    economyStatements = [
-
+    moneyStatements = [
         "Der står %d på din konto",
-        "Samlet set ejer du %d kroner",
-        "Du har lån for %d kroner."]
+        "Samlet set ejer du %d kroner"]
+
+
+    #UDVID
+    economyStatements = ["Du har lån for %d kroner.",
+                         "Du har brugt %d kroner på elektronik det sidste halve år",
+                         "Du bruger i gennemsnit %d kroner på mad hver halve år"]
 
     healthstatements = [
         "Din journal siger du døjer med rygproblemer.",
@@ -168,14 +185,11 @@ class InteractionManager(object):
         "Du mangler anden vaccination af din Hepapitis B for at fuldt ud vaccineret.",
         "Du har været ved vagtlægen 3 gange i løbet af sidste år."]
 
-#forventer antal(d) er en integer imellem 1 og 6 år. og at klub(s) er en string fra listen volunteerclubs
     workstatements = [
         "Du betragtes som erfaren indenfor din branche.",
         "Dine evner er eftertragtet hos erhvervslivet i øjeblikket.",
         "Du har en god chance for at komme hurtigt i nyt job."]
 
-    workstatementswithnumber = ["Du har været været ansat i %d år, i dit sidste job hos %s.",
-        "%s har haft dig som bestyrelsesmedlem i %d år"]
 
 
     volunteerclubs = [
@@ -189,8 +203,9 @@ class InteractionManager(object):
         "sportsklubben"]
 
     choicelist = [
-        "Du har ikke ret til kontanthjælp, da du efter reglerne er i stand til at forsørge dig selv.",
-        "Du har ikke ret til kontanthjælp, eftersom du har nok penge på dine konti til selvforsørgelse.",
         "Du har efter reglerne ret til kontanthjælp, da du er bedømt til ikke at være i stand til at forsørge dig selv på grund af helbredsmæssige årsager.",
         "På grund af dine økonomiske årsager er du blevet bedømt som havende krav på modtage kontanthjælp.",
         "Da du står uden forsørger efter samlivsophør, er du blevet berettiget kontanthjælp."]
+    nolist = [
+        "Du har ikke ret til kontanthjælp, da du efter reglerne er i stand til at forsørge dig selv.",
+        "Du har ikke ret til kontanthjælp, eftersom du har nok penge på dine konti til selvforsørgelse."]

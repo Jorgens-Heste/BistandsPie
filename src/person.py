@@ -27,3 +27,6 @@ class Person(object):
 
     def setPostalcode(self, postalcode):
         self.postalCode = postalcode
+
+    def setMoney(self, money):
+        self.money = money
