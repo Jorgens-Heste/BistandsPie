@@ -10,10 +10,8 @@ class LightManager(object):
         port = "/dev/ttyACM5"
         self.ser = serial.Serial(port, 9600)
 
-
     def __del__(self):
         self.ser.close()
-
 
     def setSession(self, sessionnumber):
         print "Sendign session number"
