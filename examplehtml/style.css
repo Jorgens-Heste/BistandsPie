@@ -3,68 +3,70 @@ body {
 }
 
 h1 {
-	color: black;
+	color: #E87902;
 	text-align: center;
 	font-size: 70px;
 	font-family: Verdana, Geneva, sans-serif;
-
-}
-
-h2 {
-	text-align: ;
-	font-size: 50px;
-	font-family: Verdana, Geneva, sans-serif;
-
-}
-
-h4 {
-	text-align: ;
-	font-size: 20px;
-	font-family: Verdana, Geneva, sans-serif;
-
+	background-color: black;
 }
 
 p {
 	font-family: Verdana, Geneva, sans-serif;
 	font-size: 20px;
 	text-align: center;
-	vertical-align: middle;
+	color: #E87902;
 }
 
 div {
 	display: inline-block;
+	background: black;
 }
 
 div p {
 	padding-top: 33%;
 	font-size: 20px;
-	vertical-align: middle;
 }
 
 .hilsen {
 	display: block;
+
 }
 
-.question {
-    background-color:black;
-    color:white;
-    margin:20px;
-    padding:20px;
-	color: #ffff00;
-} 
+.hilsen p {
+	margin: 5px;
+	padding: 5px;
+}
+
+.question p {
+    margin:5px;
+    padding:5px;
+}
+
+.uddannelse p {
+	margin: 5px;
+	padding: 5px;
+}
+
+.valg p {
+    margin:5px;
+    padding:5px;
+}
+
+.telefon p {
+    margin:5px;
+    padding:5px;
+}
 
 .blue {
   	height: 300px;
   	width: 300px;
   	border-radius: 50%;
-	background: #000;
+  		vertical-align: middle;
+
 }
 
-div.blue p {
+.blue p {
 	color: #000fff;
-	vertical-align: middle;
-	font-size: 20px;
-	text-align: center;
 }
 
 .green {
@@ -72,16 +74,13 @@ div.blue p {
   	width: 300px;
   	border-radius: 50%;
   /* line-height: 0; */
- 	vertical-align: middle;
-  	background: #000;
+  	vertical-align: middle;
 
 }
 
-div.green p { 
+.green p { 
 	color: #00ff00;
-	vertical-align: middle;
-	font-size: 20px;
-	text-align: center;
+
 }
 
 .red {
@@ -89,13 +88,8 @@ div.green p {
   	width: 300px;
   	border-radius: 50%;
   	vertical-align: middle;
-  		background: #000;
-
 }
 
-div.red p {
+.red p {
 	color: #ff0000;
-	vertical-align: middle;
-	font-size: 20px;
-	text-align: center;
 }
