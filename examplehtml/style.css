@@ -1,0 +1,101 @@
+body {
+	background-color: #fff;
+}
+
+h1 {
+	color: black;
+	text-align: center;
+	font-size: 70px;
+	font-family: Verdana, Geneva, sans-serif;
+
+}
+
+h2 {
+	text-align: ;
+	font-size: 50px;
+	font-family: Verdana, Geneva, sans-serif;
+
+}
+
+h4 {
+	text-align: ;
+	font-size: 20px;
+	font-family: Verdana, Geneva, sans-serif;
+
+}
+
+p {
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 20px;
+	text-align: center;
+	vertical-align: middle;
+}
+
+div {
+	display: inline-block;
+}
+
+div p {
+	padding-top: 33%;
+	font-size: 20px;
+	vertical-align: middle;
+}
+
+.hilsen {
+	display: block;
+}
+
+.question {
+    background-color:black;
+    color:white;
+    margin:20px;
+    padding:20px;
+	color: #ffff00;
+} 
+
+.blue {
+  	height: 300px;
+  	width: 300px;
+  	border-radius: 50%;
+	background: #000;
+}
+
+div.blue p {
+	color: #000fff;
+	vertical-align: middle;
+	font-size: 20px;
+	text-align: center;
+}
+
+.green {
+ 	height: 300px;
+  	width: 300px;
+  	border-radius: 50%;
+  /* line-height: 0; */
+ 	vertical-align: middle;
+  	background: #000;
+
+}
+
+div.green p { 
+	color: #00ff00;
+	vertical-align: middle;
+	font-size: 20px;
+	text-align: center;
+}
+
+.red {
+	height: 300px;
+  	width: 300px;
+  	border-radius: 50%;
+  	vertical-align: middle;
+  		background: #000;
+
+}
+
+div.red p {
+	color: #ff0000;
+	vertical-align: middle;
+	font-size: 20px;
+	text-align: center;
+}
