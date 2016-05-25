@@ -3,6 +3,7 @@ from random import randint
 import random
 
 from datepicker import DatePicker
+from lightmanager import LightManager
 
 
 class Session(object):
@@ -26,9 +27,11 @@ class Session(object):
         self.heading = heading
 
 
+
 class InteractionManager(object):
     datePicker = DatePicker()
     session = Session()
+    lightmanager = LightManager()
 
     def setUser(self, user):
         self.user = user
@@ -38,12 +41,15 @@ class InteractionManager(object):
         self.session = Session()
         self.session.setUser(self.user)
 
+
         if previoussession == 0:
             self.startSession1()
         elif previoussession == 1:
             self.startSession2()
         else:
             self.startSession3()
+
+        self.lightmanager.setSession(previoussession + 1) # Runs light in current phaase
 
     def startSession1(self):
         self.session.setSessionNumber("1")
@@ -94,7 +100,7 @@ class InteractionManager(object):
             self.session.appendElement("udannelse", "En Uddannelsesvejleder kan snakke med omkring din fremtid på 33925000, alle hverdage fra 09.00 til 14.00.")
             return "Du har ikke ret til kontanthjælp, du kan i stedet for modtage uddannnelseshjælp."
         else:
-            return self.choicelist[randint(0, len(self.choicelist))]
+            return self.choicelist[randint(0, len(self.choicelist) - 1)]
 
     def startSession3(self):
         self.session.setSessionNumber("3")

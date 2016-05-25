@@ -4,7 +4,7 @@ from flask import Flask, jsonify
 from flask import render_template
 
 from interaction import InteractionManager
-from matte import MatteReader
+from matte import MatteReader, FakeMatteReader
 from person import *
 from reader import *
 from conncections import FirebaseConnector
@@ -12,10 +12,13 @@ from conncections import FirebaseConnector
 
 app = Flask(__name__)
 
-#reader = MagReader()
-reader = FakeReader("5407803921") # For testing
-connectionmanager = FirebaseConnector()
+reader = MagReader()
+#reader = FakeReader("5407803921") # For testing
 matte = MatteReader()
+#matte = FakeMatteReader(15)
+
+connectionmanager = FirebaseConnector()
+
 
 interactionManager = InteractionManager()
 currentUser = ""
