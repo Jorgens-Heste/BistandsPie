@@ -171,11 +171,12 @@ class InteractionManager(object):
 #forventer antal(d) er en integer imellem 1 og 6 år. og at klub(s) er en string fra listen volunteerclubs
     workstatements = [
         "Du betragtes som erfaren indenfor din branche.",
-        "Du har været været ansat i %d år, i dit sidste job.",
-        "Du har snart jubilæum i %s",
-        "%s har haft dig som bestyrelsesmedlem i %d år",
         "Dine evner er eftertragtet hos erhvervslivet i øjeblikket.",
         "Du har en god chance for at komme hurtigt i nyt job."]
+
+    workstatementswithnumber = ["Du har været været ansat i %d år, i dit sidste job hos %s.",
+        "%s har haft dig som bestyrelsesmedlem i %d år"]
+
 
     volunteerclubs = [
         "fodboldkluben",
