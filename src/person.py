@@ -4,6 +4,8 @@ class Person(object):
         self.cpr = cpr
         date = cpr[0 : (len(cpr) - 4)]
         self.birthday = date[0:2] + "/" + date[2:4] + "/" + date[4:6]
+        self.age = 2016 - int("19" + date[4:6])
+        print self.name + " er " + str(self.age) + " gammel"
 
     def setName(self, name):
         self.name = name

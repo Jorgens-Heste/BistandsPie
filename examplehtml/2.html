@@ -1,0 +1,50 @@
+
+<!doctype html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+
+    
+<script type="text/javascript">
+    (function worker() {
+    $.ajax({
+        url: 'matte-status',
+        success: function(data) {
+            console.log(data);
+            if(data == 0) {
+                body = $('body,html') // get body
+                body.css('background-color', 'black');
+                body.empty(); // Empty all text
+
+                window.location.reload();
+
+            }
+        },
+        complete: function() {
+
+            // Schedule the next request when the current one's complete
+            setTimeout(worker, 500);
+        }
+    });
+})();
+
+</script>
+<!-- The contents of myscript.js will be loaded inside the script tag -->
+
+
+
+<title>Hello from Flask</title>
+</head>
+<body>
+    <h1>Valg!</h1>
+    
+        <div class="hilsen"> Velkommen tilbage Mark       </div>
+    
+        <div class="udannelse"> En Uddannelsesvejleder kan snakke med omkring din fremtid på 33925000, alle hverdage fra 09.00 til 14.00. </div>
+    
+        <div class="valg"> Du har ikke ret til kontanthjælp, du kan i stedet for modtage uddannnelseshjælp. </div>
+    
+        <div class="telefon"> Økonomisk rådgivning kan tilgås via kommunen på tlf: 41 85 63 86 mellem 09.00 og 14.00 på alle hverdage </div>
+    
+
+    <div></div>
+</body>
