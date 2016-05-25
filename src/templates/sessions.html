@@ -1,11 +1,14 @@
 <!doctype html>
 <head>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 
     {% block javascript %}
 <script type="text/javascript">
     {% include "js/matte.js" %}
+    {% include "js/behavior.js" %}
 </script>
+
 <!-- The contents of myscript.js will be loaded inside the script tag -->
 {% endblock %}
 
@@ -14,9 +17,11 @@
 </head>
 <body>
     <h1>{{ session.heading }}!</h1>
-    {% for element in session.elements %}
-        <div class="{{ element[0] }}"> {{element[1]}} </div>
-    {% endfor %}
 
-    <div></div>
+    <div class ="#draggables_container">
+    {% for element in session.elements %}
+        <div class="draggable {{ element[0] }} "><p>{{element[1]}}</p></div>
+    {% endfor %}
+    </div>
+
 </body>

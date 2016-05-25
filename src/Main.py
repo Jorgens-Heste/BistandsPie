@@ -15,7 +15,7 @@ app = Flask(__name__)
 #reader = MagReader()
 reader = FakeReader("5407803921") # For testing
 #matte = MatteReader()
-matte = FakeMatteReader(15)
+matte = FakeMatteReader(60)
 
 connectionmanager = FirebaseConnector()
 

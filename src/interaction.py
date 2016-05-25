@@ -22,9 +22,12 @@ class Session(object):
         unicode = content.decode('utf-8')  # Convert utf 8 to unicode so blrowser can render it
         item = (cssclass, unicode)
         self.elements.append(item)
+       # self.elements = random.shuffle(self.elements)
+
 
     def setHeading(self, heading):
         self.heading = heading
+
 
 
 
@@ -48,6 +51,7 @@ class InteractionManager(object):
             self.startSession2()
         else:
             self.startSession3()
+
 
         self.lightmanager.setSession(previoussession + 1) # Runs light in current phaase
 
@@ -106,7 +110,7 @@ class InteractionManager(object):
 
     def makeChoice(self, person):
         if person.age < 30:
-            self.session.appendElement("udannelse", "En Uddannelsesvejleder kan snakke med omkring din fremtid på 33925000, alle hverdage fra 09.00 til 14.00.")
+            self.session.appendElement("uddannelse", "En Uddannelsesvejleder kan snakke med omkring din fremtid på 33925000, alle hverdage fra 09.00 til 14.00.")
             return "Du har ikke ret til kontanthjælp, du kan i stedet for modtage uddannnelseshjælp."
 
         elif person.money > 10000:
