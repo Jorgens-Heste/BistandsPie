@@ -14,15 +14,17 @@ p {
 	font-family: Verdana, Geneva, sans-serif;
 	text-align: center;
 	color: #E87902;
+	font-weight: bold
 }
 
 div {
 	display: inline-block;
-	background: black;  }
+
+}
 
 div p {
 	padding-top: 33%;
-	font-size: 10px;
+	font-size: 15px;
 }
 
 .hilsen {
@@ -33,6 +35,8 @@ div p {
 .hilsen p {
 	margin: 5px;
 	padding: 5px;
+	font-size: 2em;
+	background: black;
 }
 
 .question p {
@@ -55,39 +59,85 @@ div p {
     padding:5px;
 }
 
-.blue {
-  	height: 150px;
-  	width: 150px;
+.blue, .green, .red {
+  	height: 200px;
+  	width: 200px;
   	border-radius: 50%;
-  		vertical-align: middle;
+  	vertical-align: middle;
+  	background: black;
 
 }
 
 .blue p {
-	color: #000fff;
-}
-
-.green {
- 	height: 150px;
-  	width: 150px;
-  	border-radius: 50%;
-  /* line-height: 0; */
-  	vertical-align: middle;
-
+	color: #00ff00;
 }
 
 .green p { 
-	color: #00ff00;
-
-}
-
-.red {
-	height: 150px;
-  	width: 150px;
-  	border-radius: 50%;
-  	vertical-align: middle;
+	color: #0000ff;
 }
 
 .red p {
 	color: #ff0000;
 }
+
+div.question {
+	color: #E87902;
+	border-width: 2px;
+	border-style: solid;
+
+}
+
+
+/**** ANimation **/ 
+
+.question{
+    float: left;
+    -webkit-animation-name: Floatingx;
+    -webkit-animation-duration: 3s;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-timing-function: ease-in-out;
+    -moz-animation-name: Floating;
+    -moz-animation-duration: 3s;
+    -moz-animation-iteration-count: infinite;
+    -moz-animation-timing-function: ease-in-out;
+    margin-left: 30px;
+    margin-top: 5px;
+
+}
+
+@-webkit-keyframes Floatingx{
+    from {-webkit-transform:translate(0, 0px);}
+    65% {-webkit-transform:translate(0, 15px);}
+    to {-webkit-transform: translate(0, -0px);    }    
+}
+    
+@-moz-keyframes Floating{
+    from {-moz-transform:translate(0, 0px);}
+    65% {-moz-transform:translate(0, 15px);}
+    to {-moz-transform: translate(0, -0px);}    
+}
+
+
+.green, .red, .blue{
+    float: left;
+    -webkit-animation-name: scalex;
+    -webkit-animation-duration:3s;
+    -webkit-animation-iteration-count:infinite;
+    -webkit-animation-timing-function:ease-in-out;
+    -moz-animation-name: scale;
+    -moz-animation-duration:3s;
+    -moz-animation-iteration-count:infinite;
+    -moz-animation-timing-function:ease-in-out;
+}
+    
+    @-webkit-keyframes scalex{
+        from {-webkit-transform: scale(0.9);}
+        65% {-webkit-transform: scale(1.0);}
+        to {-webkit-transform: scale(0.9);}    
+    }
+        
+    @-moz-keyframes scale{
+        from {-moz-transform: scale(0.9);}
+        65% {-moz-transform: scale(1.0);}
+        to {-moz-transform: scale(0.9);}    
+    }

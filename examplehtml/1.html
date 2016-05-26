@@ -31,84 +31,34 @@
 
 $( document ).ready(function() {
 
-	var newpositions = [
-	{left: 436, top: 368},
-	{left: 436, top: 368},
-	{left: 436, top: 368},
-	{left: 436, top: 368},
-	{left: 436, top: 368},
-	{left: 436, top: 368},
-	{left: 436, top: 368},
-	{left: 436, top: 368},
-	{left: 436, top: 368},
-	{left: 436, top: 368},
-	{left: 436, top: 368},
-	{left: 436, top: 368},
-	{left: 436, top: 368},
-	{left: 436, top: 368},
-	{left: 436, top: 368},
-	{left: 436, top: 368},
-	{left: 436, top: 368},
-	{left: 436, top: 368},
-	{left: 436, top: 368},
-	{left: 436, top: 368},
-	{left: 436, top: 368},
-	{left: 436, top: 368},
-	{left: 436, top: 368},
-	{left: 436, top: 368},
-	{left: 436, top: 368},
-	{left: 436, top: 368}]
 
-
-    var positionstop = [
-        456,
-        343,
-        703,
-        343,
-        243,
-        150,
-        598,
-        600,
-        456,
-        600,
-        738,
-        900,
-        200,
-        600,
-        340,
-        219,
-        987,
-        375,
-        467,
-        700,
-        390,
-        403,
-        900];
-
-    var positionsright = [
-        150,
-        263,
-        700,
-        657,
-        409,
-        700,
-        345,
-        435,
-        761,
-        367,
-        156,
-        145,
-        573,
-        634,
-        492,
-        235,
-        984,
-        478,
-        298,
-        120,
-        50,
-        276,
-        760];
+    var newpositions = [
+    {right: 900, top: 200},
+    {right: 400, top: 800},
+    {right: 1000, top: 500},
+    {right: 400, top: 300},
+    {right: 500, top: 1050},
+    {right: 1075, top: 700},
+    {right: 500, top: 450},
+    {right: 100, top: 800},
+    {right: 150, top: 300},
+    {right: 1000, top: 950},
+    {right: 1350, top: 900},
+    {right: 700, top: 300},
+    {right: 1350, top: 200},
+    {right: 0, top: 0},
+    {right: 0, top: 0},
+    {right: 0, top: 0},
+    {right: 0, top: 0},
+    {right: 0, top: 0},
+    {right: 0, top: 0},
+    {right: 0, top: 0},
+    {right: 0, top: 0},
+    {right: 0, top: 0},
+    {right: 0, top: 0},
+    {right: 0, top: 0},
+    {right: 0, top: 0},
+    {right: 0, top: 0}]
 
     var counter = 0;
 
@@ -116,48 +66,17 @@ $( document ).ready(function() {
 
         $(this).css("position", "absolute");
 
-        $(this).css("right", positionsright[counter]);
-        console.log(positionsright[counter]);
+        
+        verticalposition = newpositions[counter]["top"];
+        horisontalposition = newpositions[counter]["right"];
 
-        $(this).css("top", positionstop[counter]);
+        $(this).css("top", verticalposition);
+        $(this).css("right", horisontalposition);
 
         counter ++;
 
     }
     );
-
-
-$('.red').jqFloat({
-		width: 30,
-		height: 30,
-		speed: 12000,
-		minHeight: 50
-	});
-
-
-$('.green').jqFloat({
-		width: 30,
-		height: 30,
-		speed: 12000,
-		minHeight: 50
-	});
-
-
-$('.blue').jqFloat({
-		width: 40,
-		height: 15,
-		speed: 12000,
-		minHeight: 50
-	});
-
-
-$('div. question').jqFloat({
-		width: 40,
-		height: 40,
-		speed: 12000,
-		minHeight: 50
-	});
-
 
 });
 

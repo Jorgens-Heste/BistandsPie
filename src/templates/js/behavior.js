@@ -1,68 +1,38 @@
 $( document ).ready(function() {
 
-    positionstop = [
-        456,
-        343,
-        703,
-        343,
-        243,
-        100,
-        598,
-        600,
-        456,
-        123,
-        738,
-        900,
-        060,
-        600,
-        340,
-        219,
-        987,
-        375,
-        467,
-        700,
-        390,
-        403,
-        900]
 
-    positionsright = [
-        150,
-        263,
-        700,
-        657,
-        409,
-        550,
-        345,
-        435,
-        761,
-        367,
-        156,
-        145,
-        573,
-        634,
-        492,
-        235,
-        984,
-        478,
-        298,
-        120,
-        50,
-        276,
-        760]
+    var newpositions = [
+    {right: 900, top: 200},
+    {right: 400, top: 800},
+    {right: 1000, top: 500},
+    {right: 400, top: 300},
+    {right: 500, top: 1050},
+    {right: 1075, top: 700},
+    {right: 500, top: 450},
+    {right: 100, top: 800},
+    {right: 150, top: 300},
+    {right: 1000, top: 950},
+    {right: 1350, top: 900},
+    {right: 700, top: 300},
+    {right: 1350, top: 200}]
 
     var counter = 0;
 
-    $("div").each(function(index) {
+    $(".green, .red, .blue, .question").each(function(index) {
 
         $(this).css("position", "absolute");
 
-        $(this).css("right", positionsright[counter]);
 
-        $(this).css("top", positionstop[counter]);
+        verticalposition = newpositions[counter]["top"];
+        horisontalposition = newpositions[counter]["right"];
+
+        $(this).css("top", verticalposition);
+        $(this).css("right", horisontalposition);
 
         counter ++;
 
-    })
-
+    }
+    );
 
 });
+
