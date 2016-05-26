@@ -1,37 +1,68 @@
-/*$( document ).ready(function() {
+$( document ).ready(function() {
+
+    positionstop = [
+        456,
+        343,
+        703,
+        343,
+        243,
+        100,
+        598,
+        600,
+        456,
+        123,
+        738,
+        900,
+        060,
+        600,
+        340,
+        219,
+        987,
+        375,
+        467,
+        700,
+        390,
+        403,
+        900]
+
+    positionsright = [
+        150,
+        263,
+        700,
+        657,
+        409,
+        550,
+        345,
+        435,
+        761,
+        367,
+        156,
+        145,
+        573,
+        634,
+        492,
+        235,
+        984,
+        478,
+        298,
+        120,
+        50,
+        276,
+        760]
+
+    var counter = 0;
 
     $("div").each(function(index) {
 
         $(this).css("position", "absolute");
 
-        $(this).css("right", Math.random() * 1024);
+        $(this).css("right", positionsright[counter]);
 
-        $(this).css("top", 100 + Math.random() * 700);
+        $(this).css("top", positionstop[counter]);
 
+        counter ++;
 
-
-    });*/
-
-
-    function randomiseDraggables() {
-    var parent = $("#draggables_container");
-    var divs = parent.children();
-    divs.each(function() {
-        var rt = (Math.floor(Math.random() *359));
-        var rn = (Math.floor(Math.random() *50));
-        $(this).css({'transform':'rotate(' + rt + 'deg)','background-position' : '0% ' + rn + '%'});
-        });
-    while (divs.length) {
-        parent.append(divs.splice(Math.floor(Math.random() * divs.length), 1)[0]);
-    }
-}
-
-randomiseDraggables();
-
-$(".draggable").draggable({
-  stack: '#draggables_container div',
-  revert: true
-});
+    })
 
 
 });

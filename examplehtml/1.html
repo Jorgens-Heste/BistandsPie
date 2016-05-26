@@ -3,7 +3,7 @@
 <head>
 <link rel="stylesheet" type="text/css" href="style.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
-
+<script src="jqfloat.js"></script>
     
 <script type="text/javascript">
     (function worker() {
@@ -27,6 +27,142 @@
         }
     });
 })();
+
+
+$( document ).ready(function() {
+
+	var newpositions = [
+	{left: 436, top: 368},
+	{left: 436, top: 368},
+	{left: 436, top: 368},
+	{left: 436, top: 368},
+	{left: 436, top: 368},
+	{left: 436, top: 368},
+	{left: 436, top: 368},
+	{left: 436, top: 368},
+	{left: 436, top: 368},
+	{left: 436, top: 368},
+	{left: 436, top: 368},
+	{left: 436, top: 368},
+	{left: 436, top: 368},
+	{left: 436, top: 368},
+	{left: 436, top: 368},
+	{left: 436, top: 368},
+	{left: 436, top: 368},
+	{left: 436, top: 368},
+	{left: 436, top: 368},
+	{left: 436, top: 368},
+	{left: 436, top: 368},
+	{left: 436, top: 368},
+	{left: 436, top: 368},
+	{left: 436, top: 368},
+	{left: 436, top: 368},
+	{left: 436, top: 368}]
+
+
+    var positionstop = [
+        456,
+        343,
+        703,
+        343,
+        243,
+        150,
+        598,
+        600,
+        456,
+        600,
+        738,
+        900,
+        200,
+        600,
+        340,
+        219,
+        987,
+        375,
+        467,
+        700,
+        390,
+        403,
+        900];
+
+    var positionsright = [
+        150,
+        263,
+        700,
+        657,
+        409,
+        700,
+        345,
+        435,
+        761,
+        367,
+        156,
+        145,
+        573,
+        634,
+        492,
+        235,
+        984,
+        478,
+        298,
+        120,
+        50,
+        276,
+        760];
+
+    var counter = 0;
+
+    $(".green, .red, .blue, .question").each(function(index) {
+
+        $(this).css("position", "absolute");
+
+        $(this).css("right", positionsright[counter]);
+        console.log(positionsright[counter]);
+
+        $(this).css("top", positionstop[counter]);
+
+        counter ++;
+
+    }
+    );
+
+
+$('.red').jqFloat({
+		width: 30,
+		height: 30,
+		speed: 12000,
+		minHeight: 50
+	});
+
+
+$('.green').jqFloat({
+		width: 30,
+		height: 30,
+		speed: 12000,
+		minHeight: 50
+	});
+
+
+$('.blue').jqFloat({
+		width: 40,
+		height: 15,
+		speed: 12000,
+		minHeight: 50
+	});
+
+
+$('div. question').jqFloat({
+		width: 40,
+		height: 40,
+		speed: 12000,
+		minHeight: 50
+	});
+
+
+});
+
+
+
 
 </script>
 <!-- The contents of myscript.js will be loaded inside the script tag -->
