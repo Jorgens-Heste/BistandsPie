@@ -8,7 +8,7 @@ class LightManager(object):
 
     def __init__(self):
         try:
-            port = "/dev/ttyACM5"
+            port = "/dev/ttyACM4"
             self.ser = serial.Serial(port, 9600)
         except:
             print "NO LIGHT MANAGER ATTACHED"

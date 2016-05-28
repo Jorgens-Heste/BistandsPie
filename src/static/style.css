@@ -27,17 +27,22 @@ div p {
 	font-size: 15px;
 }
 
-.hilsen {
-	display: block;
+.hilsen, .telefon, .valg {
+	display: inline-block;
+	margin-right: auto;
+    margin-left: auto;
+    width: 100%;
 
 }
 
-.hilsen p {
-	margin: 5px;
-	padding: 5px;
-	font-size: 2em;
-	background: black;
+
+div.hilsen {
+
+    position: absolute;
+    left: 500;
+
 }
+
 
 .question p {
     margin:5px;
@@ -49,9 +54,17 @@ div p {
 	padding: 5px;
 }
 
-.valg p {
+
+.hilsen p {
+    font-size: 2em;
+
+}
+
+.valg p, .telefon p, .hilsen p {
     margin:5px;
     padding:5px;
+	background: black;
+
 }
 
 .telefon p {

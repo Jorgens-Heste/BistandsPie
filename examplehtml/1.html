@@ -32,23 +32,24 @@
 $( document ).ready(function() {
 
 
+
     var newpositions = [
-    {right: 900, top: 200},
+    {right: 1300, top: 700},
     {right: 400, top: 800},
     {right: 1000, top: 500},
-    {right: 400, top: 300},
+    {right: 400, top: 200},
     {right: 500, top: 1050},
     {right: 1075, top: 700},
     {right: 500, top: 450},
     {right: 100, top: 800},
-    {right: 150, top: 300},
+    {right: 150, top: 500},
     {right: 1000, top: 950},
     {right: 1350, top: 900},
-    {right: 700, top: 300},
+    {right: 750, top: 300},
     {right: 1350, top: 200},
-    {right: 0, top: 0},
-    {right: 0, top: 0},
-    {right: 0, top: 0},
+    {right: 700, top: 600},
+    {right: 1025, top: 250},
+    {right: 150, top: 175},
     {right: 0, top: 0},
     {right: 0, top: 0},
     {right: 0, top: 0},
@@ -59,7 +60,6 @@ $( document ).ready(function() {
     {right: 0, top: 0},
     {right: 0, top: 0},
     {right: 0, top: 0}]
-
     var counter = 0;
 
     $(".green, .red, .blue, .question").each(function(index) {
@@ -87,43 +87,49 @@ $( document ).ready(function() {
 <!-- The contents of myscript.js will be loaded inside the script tag -->
 
 
+
+
 <title>Hello from Flask</title>
 </head>
 <body>
-    <h1>Afklaringsfasen</h1>
-    
-        <div class="hilsen"> <p> Hej Mark. </p></div>
-    
-        <div class="question"> <p>Er jeg færdig med at uddanne mig? </p> </div>
-    
-        <div class="question"> <p> Har jeg det jeg skal bruge i min hverdag? </p> </div>
-    
-        <div class="question"> <p> Hvor mange penge skal der til, for at jeg kan få det til at køre rundt? </p> </div>
-    
-        <div class="question"> <p> Er der balance i min økonomi? </p> </div>
-    
-        <div class="question"> <p> Kunne jeg tænke mig at blive selvstændig? </p> </div>
-    
-        <div class="blue"> <p> Der står 19711 på din konto.</p>
-        </div>
-    
-        <div class="blue"><p> Du har lån for 8364 kroner. </p></div>
+    <h1>Afklaring!</h1>
 
-
-        <div class="green"> <p> Nuværende Addresse: Stadion Alle 33 3 Tv   , Aarhus </p> </div>
+    <div class ="#draggables_container">
     
-            <div class="green">  <p> Du har været været ansat i %d år, i dit sidste job. </p> </div>
+        <div class="draggable hilsen "><p>Hej Daniel</p></div>
     
+        <div class="draggable question "><p>Har jeg råd til mad?</p></div>
+    
+        <div class="draggable question "><p>Lyst til at arbejde i en ny branche?</p></div>
+    
+        <div class="draggable question "><p>Er der mere jeg vil vide?</p></div>
+    
+        <div class="draggable question "><p>Hvor mange penge skal der til, for at jeg kan få det til at køre rundt?</p></div>
+    
+        <div class="draggable question "><p>Hvornår har jeg sidst være ved lægen?</p></div>
+    
+        <div class="draggable blue "><p>Du har brugt 18960 kroner på elektronik det sidste halve år</p></div>
+    
+        <div class="draggable blue "><p>Du har lån for 7103 kroner.</p></div>
+    
+        <div class="draggable blue "><p>Der står 5793 på din konto</p></div>
+    
+        <div class="draggable green "><p>Nuværende Addresse: Engdalgårdsvej 156 st tv v 1, Aarhus</p></div>
+    
+        <div class="draggable green "><p>Dine evner er eftertragtet hos erhvervslivet i øjeblikket.</p></div>
+    
+        <div class="draggable green "><p>Du har en god chance for at komme hurtigt i nyt job.</p></div>
+    
+        <div class="draggable green "><p>Du har snart jubilæum i klatreklubben</p></div>
+    
+        <div class="draggable green "><p>Du har været været ansat i 6 år, i dit sidste job.</p></div>
+    
+        <div class="draggable red "><p>Fødselsdato: 54/07/80</p></div>
+    
+        <div class="draggable red "><p>Du var sidst ved lægen den: 12/04/2016</p></div>
+    
+        <div class="draggable red "><p>Din journal siger du døjer med rygproblemer.</p></div>
+    
+    </div>
 
-            <div class="green"> <p> Dine evner er eftertragtet hos erhvervslivet i øjeblikket. </p> </div>
-
-
-            <div class="red"> <p> Fødselsdato: 13/08/89 </p> </div>
-
-            <div class="red"> <p> Du var sidst ved lægen den: 13/02/2014 </p> </div>
-
-            <div class="red"> <p>Din journal siger du døjer med rygproblemer. </p> </div>
-  
-
-    <div></div>
 </body>

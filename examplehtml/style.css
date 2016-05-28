@@ -27,17 +27,22 @@ div p {
 	font-size: 15px;
 }
 
-.hilsen {
-	display: block;
+.hilsen, .telefon, .valg {
+	display: inline-block;
+	margin-right: auto;
+    margin-left: auto;
+    width: 100%;
 
 }
 
-.hilsen p {
-	margin: 5px;
-	padding: 5px;
-	font-size: 2em;
-	background: black;
+
+div.hilsen {
+
+    position: absolute;
+    left: 500;
+
 }
+
 
 .question p {
     margin:5px;
@@ -49,9 +54,17 @@ div p {
 	padding: 5px;
 }
 
-.valg p {
+
+.hilsen p {
+    font-size: 2em;
+
+}
+
+.valg p, .telefon p, .hilsen p {
     margin:5px;
     padding:5px;
+	background: black;
+
 }
 
 .telefon p {
@@ -72,7 +85,7 @@ div p {
 	color: #00ff00;
 }
 
-.green p { 
+.green p {
 	color: #0000ff;
 }
 
@@ -88,7 +101,7 @@ div.question {
 }
 
 
-/**** ANimation **/ 
+/**** ANimation **/
 
 .question{
     float: left;
@@ -108,13 +121,13 @@ div.question {
 @-webkit-keyframes Floatingx{
     from {-webkit-transform:translate(0, 0px);}
     65% {-webkit-transform:translate(0, 15px);}
-    to {-webkit-transform: translate(0, -0px);    }    
+    to {-webkit-transform: translate(0, -0px);    }
 }
-    
+
 @-moz-keyframes Floating{
     from {-moz-transform:translate(0, 0px);}
     65% {-moz-transform:translate(0, 15px);}
-    to {-moz-transform: translate(0, -0px);}    
+    to {-moz-transform: translate(0, -0px);}
 }
 
 
@@ -129,15 +142,15 @@ div.question {
     -moz-animation-iteration-count:infinite;
     -moz-animation-timing-function:ease-in-out;
 }
-    
+
     @-webkit-keyframes scalex{
         from {-webkit-transform: scale(0.9);}
         65% {-webkit-transform: scale(1.0);}
-        to {-webkit-transform: scale(0.9);}    
+        to {-webkit-transform: scale(0.9);}
     }
-        
+
     @-moz-keyframes scale{
         from {-moz-transform: scale(0.9);}
         65% {-moz-transform: scale(1.0);}
-        to {-moz-transform: scale(0.9);}    
+        to {-moz-transform: scale(0.9);}
     }

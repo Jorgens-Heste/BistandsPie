@@ -12,10 +12,10 @@ from conncections import FirebaseConnector
 
 app = Flask(__name__)
 
-#reader = MagReader()
-reader = FakeReader("5407803921") # For testing
-#matte = MatteReader()
-matte = FakeMatteReader(60)
+reader = MagReader()
+#reader = FakeReader("5407803921") # For testing
+matte = MatteReader()
+#matte = FakeMatteReader(70000000)
 
 connectionmanager = FirebaseConnector()
 
