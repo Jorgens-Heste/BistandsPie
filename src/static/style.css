@@ -5,7 +5,7 @@ body {
 h1 {
 	color: #E87902;
 	text-align: center;
-	font-size: 40px;
+	font-size: 50px;
 	font-family: Verdana, Geneva, sans-serif;
 	background-color: black;
 }
@@ -27,49 +27,54 @@ div p {
 	font-size: 15px;
 }
 
-.hilsen, .telefon, .valg {
+.hilsen, .uddannelse, .telefon, .valg {
 	display: inline-block;
 	margin-right: auto;
     margin-left: auto;
     width: 100%;
-
 }
 
-
-div.hilsen {
-
+.hilsen {
     position: absolute;
     left: 500;
-
 }
 
+.uddannelse {
+	position: absolute;
+	top: 300px;
+}
+
+.valg {
+	position: absolute;
+	top: 400px;
+}
+
+.telefon {
+	position: absolute;
+	top: 500px;
+}
 
 .question p {
     margin:5px;
     padding:5px;
 }
 
-.uddannelse p {
-	margin: 5px;
-	padding: 5px;
-}
-
-
 .hilsen p {
-    font-size: 2em;
-
+    font-size: 3em;
+	margin:5px;
+    padding:5px;
+	background: black;
 }
 
-.valg p, .telefon p, .hilsen p {
+.valg p, .telefon p, .uddannelse p {
     margin:5px;
     padding:5px;
 	background: black;
-
+	font-size: 1.5em;
 }
 
-.telefon p {
-    margin:5px;
-    padding:5px;
+.valg p {
+	color: yellow; 
 }
 
 .blue, .green, .red {
@@ -78,7 +83,6 @@ div.hilsen {
   	border-radius: 50%;
   	vertical-align: middle;
   	background: black;
-
 }
 
 .blue p {
@@ -97,9 +101,7 @@ div.question {
 	color: #E87902;
 	border-width: 2px;
 	border-style: solid;
-
 }
-
 
 /**** ANimation **/
 
@@ -130,7 +132,6 @@ div.question {
     to {-moz-transform: translate(0, -0px);}
 }
 
-
 .green, .red, .blue{
     float: left;
     -webkit-animation-name: scalex;
@@ -143,14 +144,14 @@ div.question {
     -moz-animation-timing-function:ease-in-out;
 }
 
-    @-webkit-keyframes scalex{
-        from {-webkit-transform: scale(0.9);}
-        65% {-webkit-transform: scale(1.0);}
-        to {-webkit-transform: scale(0.9);}
-    }
+@-webkit-keyframes scalex{
+    from {-webkit-transform: scale(0.9);}
+    65% {-webkit-transform: scale(1.0);}
+    to {-webkit-transform: scale(0.9);}
+}
 
-    @-moz-keyframes scale{
-        from {-moz-transform: scale(0.9);}
-        65% {-moz-transform: scale(1.0);}
-        to {-moz-transform: scale(0.9);}
-    }
+@-moz-keyframes scale{
+    from {-moz-transform: scale(0.9);}
+    65% {-moz-transform: scale(1.0);}
+    to {-moz-transform: scale(0.9);}
+}
